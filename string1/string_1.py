@@ -84,4 +84,12 @@ Given 2 strings, return their concatenation,
  except omit the first char of each. The strings will be at least length 1.
 """
 def non_start(a, b):
-    
+    return a[1:len(a)] + b[1: len(b)]
+
+"""
+Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. 
+The string length will be at least 2.
+"""
+def left2(str):
+    first = str[:2]
+    return str[2:] + first
