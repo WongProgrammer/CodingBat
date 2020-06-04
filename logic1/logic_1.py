@@ -28,3 +28,103 @@ def date_fashion(you, date):
         return 0
     else:
         return 1 
+
+"""
+The squirrels in Palo Alto spend most of the day playing. 
+In particular, they play if the temperature is between 60 and 90 (inclusive). 
+Unless it is summer, then the upper limit is 100 instead of 90. 
+Given an int temperature and a boolean is_summer, 
+    return True if the squirrels play and False otherwise.
+"""
+def squirrel_play(temp, is_summer):
+    if is_summer:
+        return  temp >= 60 and temp <= 100
+    else:
+        return  temp >= 60 and temp <= 90
+
+"""
+You are driving a little too fast, and a police officer stops you. 
+Write code to compute the result, encoded as an int value: 0=no ticket, 1=small ticket, 2=big ticket.
+If speed is 60 or less, the result is 0. 
+If speed is between 61 and 80 inclusive, the result is 1. 
+If speed is 81 or more, the result is 2.
+Unless it is your birthday -- on that day, your speed can be 5 higher in all cases.
+"""
+def caught_speeding(speed, is_birthday):
+    zero = 60
+    one = 80
+
+    if is_birthday:
+        zero = zero + 5
+        one = one + 5
+
+    if speed <= zero:
+        return 0
+    elif speed <= one:
+        return 1
+    else:
+        return 2
+
+"""
+Given 2 ints, a and b, return their sum. 
+However, sums in the range 10..19 inclusive, are forbidden, so in that case just return 20.
+"""
+def sorta_sum(a, b):
+    result = a + b
+    if result <= 19 and result >= 10:
+        result = 20
+    return result
+
+"""
+Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, 
+    and a boolean indicating if we are on vacation, 
+    return a string of the form "7:00" indicating when the alarm clock should ring. 
+Weekdays, the alarm should be "7:00" and on the weekend it should be "10:00". 
+Unless we are on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
+"""
+def alarm_clock(day, vacation):
+    if day == 0 or day == 6:
+        if vacation:
+            return 'off'
+        else:
+            return '10:00'      
+    else:
+        if vacation:
+            return '10:00'
+        else:
+            return '7:00'
+
+"""
+The number 6 is a truly great number.
+Given two int values, a and b, return True if either one is 6. 
+Or if their sum or difference is 6. 
+Note: the function abs(num) computes the absolute value of a number.
+"""
+def love6(a, b):
+    sum_result = a + b
+    diff_result = abs(a - b)
+    if a == 6 or b == 6 or sum_result == 6 or diff_result == 6:
+        return True
+    else:
+        return False
+
+"""
+Given a number n, return True if n is in the range 1..10, inclusive. 
+Unless outside_mode is True, in which case return True if the number is less or equal to 1, or greater or equal to 10.
+"""
+def in1to10(n, outside_mode):
+    if outside_mode:
+        return n <= 1 or n >= 10
+    else:
+        return n >=1 and n <= 10
+
+"""
+Given a non-negative number "num", return True if num is within 2 of a multiple of 10.
+Note: (a % b) is the remainder of dividing a by b, so (7 % 5) is 2.
+"""
+def near_ten(num):
+    multiple = num % 10
+    if multiple <= 2 or (10 - multiple) <=2:
+        return True
+    else:
+        return False
